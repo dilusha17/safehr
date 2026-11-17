@@ -1,4 +1,4 @@
-- [ ] Update theme and original logo, favicon and sharing image.
-- [ ] Add reduced-motion-safe, below-fold AOS reveals and hero slide transitions.
-- [ ] Replace decorative icons with bundled flat multicolour icons.
-- [ ] Verify existing commerce, filters, routes and desktop/mobile presentation.
+- [x] Update theme and original logo, favicon and sharing image.
+- [x] Add reduced-motion-safe, below-fold AOS reveals and hero slide transitions.
+- [x] Replace decorative icons with bundled flat multicolour icons.
+- [x] Verify existing commerce, filters, routes and desktop/mobile presentation.

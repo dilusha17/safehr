@@ -16,11 +16,11 @@ function AboutPage() {
   return (
     <>
       <section className="bg-navy-900 text-on-dark">
-        <div className="container-page py-14 md:py-20">
+        <Reveal animation="fade-right" className="container-page py-14 md:py-20">
           <p className="eyebrow text-safety-500">About us</p>
           <h1 className="mt-3 text-4xl md:text-5xl">Smart safety, delivered.</h1>
           <p className="mt-5 max-w-3xl text-lg text-on-dark-muted">Safe HR Consultants is a New Zealand workplace safety consultancy based in Parnell, Auckland. We pair practical compliance know-how with safety products and technology for modern operations.</p>
-        </div>
+        </Reveal>
       </section>
       <section className="section-y">
         <div className="container-page">
