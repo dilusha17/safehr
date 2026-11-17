@@ -10,33 +10,69 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShopIndexRouteImport } from './routes/shop.index'
+import { Route as ShopCategoryIndexRouteImport } from './routes/shop.$category.index'
+import { Route as ShopCategorySubcategoryRouteImport } from './routes/shop.$category.$subcategory'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopCategoryIndexRoute = ShopCategoryIndexRouteImport.update({
+  id: '/shop/$category/',
+  path: '/shop/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopCategorySubcategoryRoute = ShopCategorySubcategoryRouteImport.update({
+  id: '/shop/$category/$subcategory',
+  path: '/shop/$category/$subcategory',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/shop/': typeof ShopIndexRoute
+  '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
+  '/shop/$category/': typeof ShopCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/shop': typeof ShopIndexRoute
+  '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
+  '/shop/$category': typeof ShopCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/shop/': typeof ShopIndexRoute
+  '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
+  '/shop/$category/': typeof ShopCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/shop/' | '/shop/$category/$subcategory' | '/shop/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/shop' | '/shop/$category/$subcategory' | '/shop/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/shop/'
+    | '/shop/$category/$subcategory'
+    | '/shop/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ShopIndexRoute: typeof ShopIndexRoute
+  ShopCategorySubcategoryRoute: typeof ShopCategorySubcategoryRoute
+  ShopCategoryIndexRoute: typeof ShopCategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +84,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/$category/': {
+      id: '/shop/$category/'
+      path: '/shop/$category'
+      fullPath: '/shop/$category/'
+      preLoaderRoute: typeof ShopCategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/$category/$subcategory': {
+      id: '/shop/$category/$subcategory'
+      path: '/shop/$category/$subcategory'
+      fullPath: '/shop/$category/$subcategory'
+      preLoaderRoute: typeof ShopCategorySubcategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ShopIndexRoute: ShopIndexRoute,
+  ShopCategorySubcategoryRoute: ShopCategorySubcategoryRoute,
+  ShopCategoryIndexRoute: ShopCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
