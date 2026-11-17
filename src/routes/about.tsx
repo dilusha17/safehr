@@ -1,3 +1,4 @@
+import { Reveal, stagger } from "@/components/Reveal";
 import { AppIcon } from "@/components/AppIcon";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -23,22 +24,22 @@ function AboutPage() {
       </section>
       <section className="section-y">
         <div className="container-page">
-          <h2 className="text-3xl text-navy-900">What we do</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">{aboutServices.map((s) => <FeatureCard key={s.title} {...s} />)}</div>
+          <Reveal><h2 className="text-3xl text-navy-900">What we do</h2></Reveal>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">{aboutServices.map((s, i) => <FeatureCard key={s.title} {...s} delay={stagger(i)} />)}</div>
           <p className="mt-8 rounded-card bg-safety-100 p-5 font-medium text-navy-900">NZ industry expertise: local compliance knowledge and practical implementation support.</p>
         </div>
       </section>
       <section className="section-y bg-surface">
         <div className="container-page">
-          <h2 className="text-3xl text-navy-900">What clients say</h2>
+          <Reveal><h2 className="text-3xl text-navy-900">What clients say</h2></Reveal>
           {/* TODO: owner to confirm named approval for each testimonial */}
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure key={t.company} className="card-base p-6">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.company} delay={stagger(i)}><figure className="card-base h-full p-6">
                 <AppIcon name="quote" size={28} />
                 <blockquote className="mt-3 text-ink">“{t.quote}”</blockquote>
                 <figcaption className="mt-4 text-sm"><span className="font-semibold text-navy-900">{t.role}</span>, <span className="text-muted-foreground">{t.company}</span></figcaption>
-              </figure>
+              </figure></Reveal>
             ))}
           </div>
         </div>
