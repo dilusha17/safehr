@@ -2,6 +2,6 @@
 - [x] Add reduced-motion-safe, below-fold AOS reveals and hero slide transitions.
 - [x] Replace decorative icons with bundled flat multicolour icons.
 - [x] Verify existing commerce, filters, routes and desktop/mobile presentation.
-- [ ] Add the seven-article Safety Insights blog, navigation and article pages.
-- [ ] Add the premium-equipment About section and distributor wording.
-- [ ] Verify blog filters, article data, navigation and unchanged shopping flow; list changed files.
+- [x] Add the seven-article Safety Insights blog, navigation and article pages.
+- [x] Add the premium-equipment About section and distributor wording.
+- [x] Verify blog filters, article data, navigation and unchanged shopping flow; list changed files.
