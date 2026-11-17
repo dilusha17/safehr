@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ShoppingCart } from "lucide-react";
+
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
@@ -35,10 +36,10 @@ export function ProductCard({ product }: { product: Product }) {
             {product.name}
           </Link>
         </h3>
-        <p className="mt-auto text-lg font-bold text-navy-900">{formatNZD(product.price)}</p>
+        <p className="mt-auto text-lg font-bold text-safety-700">{formatNZD(product.price)}</p>
         {product.inStock ? (
           <Button className="relative z-10 w-full" onClick={() => add(product)} aria-label={`Add ${product.name} to cart`}>
-            <ShoppingCart /> Add to cart
+            <AppIcon name="cart" size=20 /> Add to cart
           </Button>
         ) : (
           <Button className="relative z-10 w-full" disabled>Out of stock</Button>

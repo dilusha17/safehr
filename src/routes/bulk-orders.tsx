@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { createFileRoute } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { getProductBySlug } from "@/lib/products";
@@ -25,7 +26,7 @@ function BulkPage() {
         <div className="container-page py-14 md:py-20">
           <Breadcrumbs tone="light" items={[{ label: "Home", target: "home" }, { label: "Bulk orders" }]} />
           <h1 className="mt-6 max-w-3xl text-4xl md:text-5xl">Buying for a team, site or fleet? Contact the seller for bulk pricing.</h1>
-          <Button asChild size="lg" className="mt-8"><a href={wa} target="_blank" rel="noopener noreferrer"><MessageCircle /> WhatsApp the seller</a></Button>
+          <Button asChild size="lg" className="mt-8"><a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size=20 /> WhatsApp the seller</a></Button>
         </div>
       </section>
       <section className="section-y">

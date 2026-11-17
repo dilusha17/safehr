@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+
 import { company } from "@/data/company";
 import { categoryTree } from "@/lib/products";
 import { CategoryLink } from "./CategoryLink";
@@ -12,15 +13,15 @@ export function Footer() {
     <footer className="bg-navy-900 text-on-dark">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo tone="light" />
+          <Logo variant="light" />
           <p className="mt-4 text-sm text-on-dark-muted">
             {company.tagline} A New Zealand workplace safety consultancy supplying safety gloves and equipment.
           </p>
           <address className="mt-5 space-y-2 text-sm not-italic text-on-dark-muted">
-            <p className="flex gap-2"><MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />{company.address.full}</p>
-            <p><a className="flex gap-2 hover:text-on-dark" href={company.phone.href}><Phone className="size-4" aria-hidden />{company.phone.display}</a></p>
-            <p><a className="flex gap-2 hover:text-on-dark" href={company.whatsapp.href} target="_blank" rel="noopener noreferrer"><MessageCircle className="size-4" aria-hidden />WhatsApp {company.whatsapp.display}</a></p>
-            <p><a className="flex gap-2 break-all hover:text-on-dark" href={`mailto:${company.email}`}><Mail className="size-4 shrink-0" aria-hidden />{company.email}</a></p>
+            <p className="flex gap-2"><AppIcon name="address" size=16 />{company.address.full}</p>
+            <p><a className="flex gap-2 hover:text-on-dark" href={company.phone.href}><AppIcon name="phone" size=16 />{company.phone.display}</a></p>
+            <p><a className="flex gap-2 hover:text-on-dark" href={company.whatsapp.href} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size=16 />WhatsApp {company.whatsapp.display}</a></p>
+            <p><a className="flex gap-2 break-all hover:text-on-dark" href={`mailto:${company.email}`}><AppIcon name="email" size=16 />{company.email}</a></p>
           </address>
         </div>
         <div>
