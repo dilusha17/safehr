@@ -8,6 +8,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "aos/dist/aos.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -37,7 +38,6 @@
   --color-safety-600: var(--safety-600);
   --color-safety-700: var(--safety-700);
   --color-safety-100: var(--safety-100);
-  --color-hivis-400: var(--hivis-400);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-line: var(--line);
@@ -92,14 +92,13 @@
 
 :root {
   --radius: 0.625rem;
-  --navy-900: oklch(0.235 0.06 255);
-  --navy-800: oklch(0.28 0.065 255);
-  --navy-700: oklch(0.35 0.085 257);
-  --safety-500: oklch(0.69 0.2 44);
-  --safety-600: oklch(0.64 0.195 43);
-  --safety-700: oklch(0.54 0.16 42);
-  --safety-100: oklch(0.95 0.03 55);
-  --hivis-400: oklch(0.85 0.17 85);
+  --navy-900: oklch(0.352104166 0.096802957 263.819457352);
+  --navy-800: oklch(0.397452635 0.105221650 263.303386570);
+  --navy-700: oklch(0.462417232 0.114318945 262.729051085);
+  --safety-500: oklch(0.802246974 0.157840129 78.362350885);
+  --safety-600: oklch(0.732229749 0.149240678 77.157073131);
+  --safety-700: oklch(0.507808598 0.107998256 73.297566702);
+  --safety-100: oklch(0.966009974 0.036029465 87.792080078);
   --surface: oklch(0.98 0.005 250);
   --ink: oklch(0.21 0.04 265);
   --line: oklch(0.93 0.013 255);
@@ -130,7 +129,7 @@
   --chart-1: var(--safety-500);
   --chart-2: var(--navy-700);
   --chart-3: var(--success);
-  --chart-4: var(--hivis-400);
+  --chart-4: var(--safety-500);
   --chart-5: var(--navy-900);
   --sidebar: var(--surface);
   --sidebar-foreground: var(--ink);
@@ -191,7 +190,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.015em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
   :focus-visible { outline: 2px solid var(--safety-500); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -226,4 +225,14 @@
   border-radius: var(--radius-card);
   transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
   &:hover { box-shadow: var(--shadow-card-value); }
+}
+
+/* Original flat icons keep their own colours within a semantic tint tile. */
+.app-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0.18em; border-radius: 6px; background: var(--safety-100); line-height: 0; }
+.app-icon svg { width: 100%; height: 100%; }
+[data-hero-active="true"] .hero-enter { animation: hero-enter 380ms ease-out both; }
+@keyframes hero-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-enter { animation: none !important; }
 }
