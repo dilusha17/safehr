@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Front-end only store: no backend, database, auth or payments; orders are sent by WhatsApp/email via `src/lib/orderRequest.ts` (owner requirement; swap point for a future backend).
+- All products, categories, company details and copy live in `src/data/`; components derive nav, counts and breadcrumbs from them, never hard-code.
+- Routing is TanStack file routes with per-route `head()` (the brief's React Router/Helmet were mapped to these); shop filters live in validated URL search params.

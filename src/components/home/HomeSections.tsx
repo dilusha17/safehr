@@ -66,14 +66,14 @@ export function FeaturedProducts() {
 }
 
 export function WhyShop() {
-  const icons = [ShieldCheck, Package, MessageCircle];
+  const icons = [ShieldCheck, Package, MessageCircle] as const;
   return (
     <section className="section-y">
       <div className="container-page">
         <SectionHeading eyebrow="Why shop with Safe HR" title="Protection chosen by safety people" center />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {whyShop.map((w, i) => {
-            const Icon = icons[i];
+            const Icon = icons[i] ?? ShieldCheck;
             return (
               <div key={w.title} className="card-base p-6">
                 <span className="flex size-12 items-center justify-center rounded-lg bg-safety-100 text-safety-700"><Icon className="size-6" aria-hidden /></span>

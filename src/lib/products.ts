@@ -9,7 +9,7 @@ export const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: "name", label: "Name A to Z" },
 ];
 
-export type CategoryNode = Category & { path: string[]; count: number; children: CategoryNode[] };
+export type CategoryNode = Omit<Category, "children"> & { path: string[]; count: number; children: CategoryNode[] };
 
 function build(cats: Category[], parent: string[]): CategoryNode[] {
   return cats
@@ -67,7 +67,7 @@ export function allTags(list: Product[] = products): string[] {
 }
 
 export function tagLabel(tag: string): string {
-  return tag.split("-").map((w) => (/^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1))).join(" ");
+  return tag.split("-").map((w) => (/^\d/.test(w) ? w : (w[0] ?? "").toUpperCase() + w.slice(1))).join(" ");
 }
 
 export function categoryNames(p: Product): string {
@@ -85,7 +85,7 @@ export function searchProducts(list: Product[], q: string): Product[] {
   return list.filter((p) => `${p.name} ${categoryNames(p)}`.toLowerCase().includes(term));
 }
 
-export type ProductFilters = { q?: string; sort?: SortKey; min?: number; max?: number; tag?: string };
+export type ProductFilters = { q?: string | undefined; sort?: SortKey | undefined; min?: number | undefined; max?: number | undefined; tag?: string | undefined };
 
 export function applyFilters(list: Product[], f: ProductFilters): Product[] {
   let out = searchProducts(list, f.q ?? "");

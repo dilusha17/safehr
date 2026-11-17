@@ -8,14 +8,14 @@ import { CategoryLink } from "@/components/layout/CategoryLink";
 export type FilterProps = {
   activePath: string[];
   bounds: [number, number];
-  min?: number;
-  max?: number;
+  min?: number | undefined;
+  max?: number | undefined;
   tags: string[];
-  tag?: string;
+  tag?: string | undefined;
   onPrice: (range: [number, number]) => void;
   onTag: (tag: string | undefined) => void;
   onClear: () => void;
-  onNavigate?: () => void;
+  onNavigate?: (() => void) | undefined;
 };
 
 export function FilterSidebar({ activePath, bounds, min, max, tags, tag, onPrice, onTag, onClear, onNavigate }: FilterProps) {
@@ -54,7 +54,7 @@ export function FilterSidebar({ activePath, bounds, min, max, tags, tag, onPrice
           max={bounds[1]}
           step={1}
           value={[min ?? bounds[0], max ?? bounds[1]]}
-          onValueChange={(v) => onPrice([v[0], v[1]])}
+          onValueChange={(v) => onPrice([v[0] ?? bounds[0], v[1] ?? bounds[1]])}
           aria-label="Price range"
         />
         <p className="mt-3 text-sm text-muted-foreground">
