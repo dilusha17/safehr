@@ -10,7 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BulkOrdersRouteImport } from './routes/bulk-orders'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ShippingReturnsRouteImport } from './routes/shipping-returns'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
+import { Route as TechnologyAiSafetyCameraSystemRouteImport } from './routes/technology.ai-safety-camera-system'
+import { Route as TechnologyAirQualityMonitoringRouteImport } from './routes/technology.air-quality-monitoring'
 import { Route as ShopCategoryIndexRouteImport } from './routes/shop.$category.index'
 import { Route as ShopCategorySubcategoryRouteImport } from './routes/shop.$category.$subcategory'
 
@@ -19,11 +30,68 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BulkOrdersRoute = BulkOrdersRouteImport.update({
+  id: '/bulk-orders',
+  path: '/bulk-orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingReturnsRoute = ShippingReturnsRouteImport.update({
+  id: '/shipping-returns',
+  path: '/shipping-returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopIndexRoute = ShopIndexRouteImport.update({
   id: '/shop/',
   path: '/shop/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TechnologyAiSafetyCameraSystemRoute =
+  TechnologyAiSafetyCameraSystemRouteImport.update({
+    id: '/technology/ai-safety-camera-system',
+    path: '/technology/ai-safety-camera-system',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TechnologyAirQualityMonitoringRoute =
+  TechnologyAirQualityMonitoringRouteImport.update({
+    id: '/technology/air-quality-monitoring',
+    path: '/technology/air-quality-monitoring',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ShopCategoryIndexRoute = ShopCategoryIndexRouteImport.update({
   id: '/shop/$category/',
   path: '/shop/$category/',
@@ -37,12 +105,34 @@ const ShopCategorySubcategoryRoute = ShopCategorySubcategoryRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/bulk-orders': typeof BulkOrdersRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
+  '/terms': typeof TermsRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/technology/ai-safety-camera-system': typeof TechnologyAiSafetyCameraSystemRoute
+  '/technology/air-quality-monitoring': typeof TechnologyAirQualityMonitoringRoute
   '/shop/': typeof ShopIndexRoute
   '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
   '/shop/$category/': typeof ShopCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/bulk-orders': typeof BulkOrdersRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
+  '/terms': typeof TermsRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/technology/ai-safety-camera-system': typeof TechnologyAiSafetyCameraSystemRoute
+  '/technology/air-quality-monitoring': typeof TechnologyAirQualityMonitoringRoute
   '/shop': typeof ShopIndexRoute
   '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
   '/shop/$category': typeof ShopCategoryIndexRoute
@@ -50,6 +140,17 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/bulk-orders': typeof BulkOrdersRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/privacy': typeof PrivacyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
+  '/terms': typeof TermsRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/technology/ai-safety-camera-system': typeof TechnologyAiSafetyCameraSystemRoute
+  '/technology/air-quality-monitoring': typeof TechnologyAirQualityMonitoringRoute
   '/shop/': typeof ShopIndexRoute
   '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
   '/shop/$category/': typeof ShopCategoryIndexRoute
@@ -57,12 +158,52 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/shop/' | '/shop/$category/$subcategory' | '/shop/$category/'
+    | '/'
+    | '/about'
+    | '/bulk-orders'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/privacy'
+    | '/shipping-returns'
+    | '/terms'
+    | '/product/$slug'
+    | '/technology/ai-safety-camera-system'
+    | '/technology/air-quality-monitoring'
+    | '/shop/'
+    | '/shop/$category/$subcategory'
+    | '/shop/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/shop' | '/shop/$category/$subcategory' | '/shop/$category'
+  to:
+    | '/'
+    | '/about'
+    | '/bulk-orders'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/privacy'
+    | '/shipping-returns'
+    | '/terms'
+    | '/product/$slug'
+    | '/technology/ai-safety-camera-system'
+    | '/technology/air-quality-monitoring'
+    | '/shop'
+    | '/shop/$category/$subcategory'
+    | '/shop/$category'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/bulk-orders'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/privacy'
+    | '/shipping-returns'
+    | '/terms'
+    | '/product/$slug'
+    | '/technology/ai-safety-camera-system'
+    | '/technology/air-quality-monitoring'
     | '/shop/'
     | '/shop/$category/$subcategory'
     | '/shop/$category/'
@@ -70,6 +211,17 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BulkOrdersRoute: typeof BulkOrdersRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ContactRoute: typeof ContactRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ShippingReturnsRoute: typeof ShippingReturnsRoute
+  TermsRoute: typeof TermsRoute
+  ProductSlugRoute: typeof ProductSlugRoute
+  TechnologyAiSafetyCameraSystemRoute: typeof TechnologyAiSafetyCameraSystemRoute
+  TechnologyAirQualityMonitoringRoute: typeof TechnologyAirQualityMonitoringRoute
   ShopIndexRoute: typeof ShopIndexRoute
   ShopCategorySubcategoryRoute: typeof ShopCategorySubcategoryRoute
   ShopCategoryIndexRoute: typeof ShopCategoryIndexRoute
@@ -84,11 +236,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bulk-orders': {
+      id: '/bulk-orders'
+      path: '/bulk-orders'
+      fullPath: '/bulk-orders'
+      preLoaderRoute: typeof BulkOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping-returns': {
+      id: '/shipping-returns'
+      path: '/shipping-returns'
+      fullPath: '/shipping-returns'
+      preLoaderRoute: typeof ShippingReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/': {
       id: '/shop/'
       path: '/shop'
       fullPath: '/shop/'
       preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology/ai-safety-camera-system': {
+      id: '/technology/ai-safety-camera-system'
+      path: '/technology/ai-safety-camera-system'
+      fullPath: '/technology/ai-safety-camera-system'
+      preLoaderRoute: typeof TechnologyAiSafetyCameraSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology/air-quality-monitoring': {
+      id: '/technology/air-quality-monitoring'
+      path: '/technology/air-quality-monitoring'
+      fullPath: '/technology/air-quality-monitoring'
+      preLoaderRoute: typeof TechnologyAirQualityMonitoringRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/$category/': {
@@ -110,6 +339,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BulkOrdersRoute: BulkOrdersRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  ContactRoute: ContactRoute,
+  PrivacyRoute: PrivacyRoute,
+  ShippingReturnsRoute: ShippingReturnsRoute,
+  TermsRoute: TermsRoute,
+  ProductSlugRoute: ProductSlugRoute,
+  TechnologyAiSafetyCameraSystemRoute: TechnologyAiSafetyCameraSystemRoute,
+  TechnologyAirQualityMonitoringRoute: TechnologyAirQualityMonitoringRoute,
   ShopIndexRoute: ShopIndexRoute,
   ShopCategorySubcategoryRoute: ShopCategorySubcategoryRoute,
   ShopCategoryIndexRoute: ShopCategoryIndexRoute,
