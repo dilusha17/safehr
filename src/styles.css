@@ -230,6 +230,8 @@
 /* Original flat icons keep their own colours within a semantic tint tile. */
 .app-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0.18em; border-radius: 6px; background: var(--safety-100); line-height: 0; }
 .app-icon svg { width: 100%; height: 100%; }
+/* Keep offscreen horizontal AOS transforms from widening the page. */
+#main, footer { overflow-x: clip; }
 [data-hero-active="true"] .hero-enter { animation: hero-enter 380ms ease-out both; }
 @keyframes hero-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {

@@ -1,5 +1,6 @@
 import type { LegalPage } from "@/data/legal";
 import { Breadcrumbs } from "./Breadcrumbs";
+import { Reveal } from "@/components/Reveal";
 
 export function LegalView({ page }: { page: LegalPage }) {
   return (
@@ -10,8 +11,8 @@ export function LegalView({ page }: { page: LegalPage }) {
       <p className="mt-3 text-muted-foreground">{page.intro}</p>
       {page.sections.map((s) => (
         <section key={s.heading} className="mt-8">
-          <h2 className="text-2xl text-navy-900">{s.heading}</h2>
-          <p className="mt-2 text-ink">{s.body}</p>
+          <Reveal><h2 className="text-2xl text-navy-900">{s.heading}</h2>
+          <p className="mt-2 text-ink">{s.body}</p></Reveal>
         </section>
       ))}
     </div>

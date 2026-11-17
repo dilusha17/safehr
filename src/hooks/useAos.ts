@@ -15,7 +15,7 @@ export function useAos() {
   useEffect(() => {
     let cancelled = false;
     const frame = requestAnimationFrame(() => {
-      void import("aos").then(({ default: AOS }) => { if (!cancelled) AOS.refreshHard(); });
+      void import("aos").then(({ default: AOS }) => { if (!cancelled) { AOS.refreshHard(); AOS.refresh(); } });
     });
     return () => { cancelled = true; cancelAnimationFrame(frame); };
   }, [location.href]);

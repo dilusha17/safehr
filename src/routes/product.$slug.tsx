@@ -17,6 +17,7 @@ import { BulkOrderCta } from "@/components/shop/BulkOrderCta";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { useAddToCart } from "@/components/shop/ProductCard";
 import { clampQty } from "@/context/CartContext";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -103,7 +104,7 @@ function ProductPage() {
           </TabsContent>
         </Tabs>
         <section className="mt-16">
-          <h2 className="text-2xl text-navy-900 md:text-3xl">Related products</h2>
+          <Reveal><h2 className="text-2xl text-navy-900 md:text-3xl">Related products</h2></Reveal>
           <ProductGrid products={relatedProducts(p)} className="mt-6" />
         </section>
       </div>

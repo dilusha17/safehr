@@ -2,3 +2,4 @@
 - [x] Add reduced-motion-safe, below-fold AOS reveals and hero slide transitions.
 - [x] Replace decorative icons with bundled flat multicolour icons.
 - [x] Verify existing commerce, filters, routes and desktop/mobile presentation.
+- [ ] Complete every-page review, fix offscreen animation overflow and verify all product actions.

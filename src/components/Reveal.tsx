@@ -10,10 +10,12 @@ export function Reveal({ children, animation = "fade-up", delay = 0, duration = 
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
     const node = ref.current;
-    if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (node.getBoundingClientRect().top >= window.innerHeight) {
-      setAnimate(true);
-    }
+    if (!node) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!motion.matches && node.getBoundingClientRect().top >= window.innerHeight) setAnimate(true);
+    const onMotion = () => { if (motion.matches) setAnimate(false); };
+    motion.addEventListener("change", onMotion);
+    return () => motion.removeEventListener("change", onMotion);
   }, []);
   useEffect(() => {
     if (animate) void import("aos").then(({ default: AOS }) => AOS.refreshHard());
