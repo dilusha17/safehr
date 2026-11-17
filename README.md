@@ -1,29 +1,16 @@
-# Welcome to your Lovable project
+# Safe HR Consultants – Safety Store
 
-This project was built with [Lovable](https://lovable.dev).
+Front-end only store (no backend). Run with `bun install && bun run dev`.
 
-## Build with Lovable
+- Data: `src/data/` (products, categories, company, content, legal). Commerce constants: `src/config/commerce.ts`.
+- Add a product: append to `src/data/products.ts` with a `categoryPath` matching `src/data/categories.ts`.
+- Add a category: add it to the tree in `src/data/categories.ts`; empty categories stay hidden.
+- Orders: cart (localStorage `safehr_cart_v1`) → `/checkout` → WhatsApp or email message.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## TODOs
+- Confirm GST-inclusive pricing, email address, shipping/returns and terms.
+- Download product images into `src/assets/products/` before the old site is retired.
+- Confirm testimonial approvals and AI camera privacy wording (Privacy Act 2020).
+- Confirm bulk-order process; supply technology specs if wanted.
+- Replace hero background photos and the text logo with real brand assets.
+- TODO(backend): online payment / order API.
