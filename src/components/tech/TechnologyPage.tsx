@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { CheckCircle2, Layers, MessageCircle, type LucideIcon } from "lucide-react";
+import { AppIcon } from "@/components/AppIcon";
+import { featureIcon, type IconName } from "@/lib/icons";
+import { Reveal, stagger } from "@/components/Reveal";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -8,13 +10,13 @@ import { buildWhatsAppLink } from "@/lib/format";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { IndustriesStrip, SectionHeading } from "@/components/home/HomeSections";
 
-export function FeatureCard({ title, body, Icon = CheckCircle2 }: { title: string; body: string; Icon?: LucideIcon }) {
+export function FeatureCard({ title, body, Icon, delay = 0 }: { title: string; body: string; Icon?: IconName; delay?: number }) {
   return (
-    <div className="card-base p-6">
-      <Icon className="size-7 text-safety-700" aria-hidden />
+    <Reveal delay={delay}><div className="card-base h-full p-6">
+      <AppIcon name={Icon ?? featureIcon(title)} />
       <h3 className="mt-3 text-lg text-navy-900">{title}</h3>
       <p className="mt-1 text-sm text-muted-foreground">{body}</p>
-    </div>
+    </div></Reveal>
   );
 }
 
@@ -22,10 +24,11 @@ export function StepList({ steps }: { steps: string[] }) {
   return (
     <ol className="grid gap-5 md:grid-cols-3">
       {steps.map((s, i) => (
-        <li key={s} className="relative rounded-card bg-surface p-6">
-          <span className="font-display text-5xl font-bold text-safety-500">{i + 1}</span>
+        <li key={s}><Reveal delay={stagger(i)} className="relative h-full rounded-card bg-surface p-6">
+          <AppIcon name={(["sensor", "dashboard", "support"] as const)[i] ?? "safety"} />
+          <span className="font-display text-5xl font-bold text-safety-700">{i + 1}</span>
           <p className="mt-2 font-medium text-navy-900">{s}</p>
-        </li>
+        </Reveal></li>
       ))}
     </ol>
   );
@@ -37,16 +40,16 @@ export function TechnologyPage({ content, visual, afterHero }: { content: TechCo
     <>
       <section className="bg-navy-900 text-on-dark">
         <div className="container-page grid gap-12 py-14 md:grid-cols-2 md:items-center md:py-20">
-          <div>
+          <Reveal animation="fade-right">
             <Breadcrumbs tone="light" items={[{ label: "Home", target: "home" }, { label: "Technology" }, { label: content.name }]} />
             <h1 className="mt-6 text-4xl md:text-5xl">{content.name}</h1>
             <p className="mt-4 text-lg text-on-dark-muted">{content.summary}</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button asChild size="lg"><Link to="/contact" search={{ topic: content.topic }}>Request a demo</Link></Button>
-              <Button asChild size="lg" variant="outlineLight"><a href={wa} target="_blank" rel="noopener noreferrer"><MessageCircle /> WhatsApp us</a></Button>
+              <Button asChild size="lg" variant="outlineLight"><a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={20} /> WhatsApp us</a></Button>
             </div>
-          </div>
-          <div className="pb-8">{visual}</div>
+          </Reveal>
+          <Reveal animation="fade-left" className="pb-8">{visual}</Reveal>
         </div>
       </section>
       {afterHero}
@@ -54,7 +57,7 @@ export function TechnologyPage({ content, visual, afterHero }: { content: TechCo
         <div className="container-page">
           <SectionHeading eyebrow="What it does" title="Key capabilities" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {content.features.map((f) => <FeatureCard key={f.title} {...f} />)}
+            {content.features.map((f, i) => <FeatureCard key={f.title} {...f} delay={stagger(i)} />)}
           </div>
         </div>
       </section>
@@ -66,13 +69,13 @@ export function TechnologyPage({ content, visual, afterHero }: { content: TechCo
       </section>
       <IndustriesStrip title="Where it helps" />
       <section className="bg-safety-100">
-        <div className="container-page flex flex-col items-start gap-4 py-10 md:flex-row md:items-center md:justify-between">
+        <Reveal className="container-page flex flex-col items-start gap-4 py-10 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-4">
-            <Layers className="size-8 text-safety-700" aria-hidden />
+            <AppIcon name="dashboard" size={40} />
             <p className="font-display text-xl font-bold text-navy-900">Works with the Safe HR safety platform</p>
           </div>
           <Button asChild variant="navy"><Link to="/contact" search={{ topic: content.topic }}>Talk to us</Link></Button>
-        </div>
+        </Reveal>
       </section>
       <section className="section-y">
         <div className="container-page max-w-3xl">
@@ -88,13 +91,13 @@ export function TechnologyPage({ content, visual, afterHero }: { content: TechCo
         </div>
       </section>
       <section className="section-y bg-navy-900 text-center text-on-dark">
-        <div className="container-page">
+        <Reveal className="container-page">
           <h2 className="text-3xl md:text-4xl">See how it would work at your site</h2>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg"><Link to="/contact" search={{ topic: content.topic }}>Request a demo</Link></Button>
             <Button asChild size="lg" variant="outlineLight"><a href={wa} target="_blank" rel="noopener noreferrer">WhatsApp us</a></Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

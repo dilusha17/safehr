@@ -98,12 +98,12 @@ export function HeroSlider() {
         <CarouselContent className="ml-0">
           {slides.map((s, i) => (
             <CarouselItem key={s.title} className="pl-0" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
-              <div className="relative min-h-[480px] overflow-hidden md:h-[560px]">
+              <div data-hero-active={selected === i} className="relative min-h-[480px] overflow-hidden md:h-[560px]">
                 <img src={s.bg} alt="" width={1920} height={1088} loading={i === 0 ? "eager" : "lazy"} className="absolute inset-0 size-full object-cover" />
                 <div className="absolute inset-0 bg-navy-900/80 md:bg-gradient-to-r md:from-navy-900 md:via-navy-900/85 md:to-navy-900/40" />
                 <div className="container-page relative grid h-full gap-8 py-12 pb-24 md:grid-cols-[55%_45%] md:items-center md:py-0">
-                  <div className="text-on-dark">
-                    <p className="eyebrow text-hivis-400">{s.eyebrow}</p>
+                  <div className="hero-enter text-on-dark">
+                    <p className="eyebrow text-safety-500">{s.eyebrow}</p>
                     {i === 0 ? (
                       <h1 className="mt-3 text-4xl leading-[1.05] md:text-6xl">{s.title}</h1>
                     ) : (
@@ -119,7 +119,7 @@ export function HeroSlider() {
                       </ul>
                     )}
                   </div>
-                  <div className="hidden h-full md:block">{s.visual}</div>
+                  <div className="hero-enter hidden h-full md:block">{s.visual}</div>
                 </div>
               </div>
             </CarouselItem>

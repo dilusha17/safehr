@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { createFileRoute, notFound, useNavigate } from "@tanstack/react-router";
-import { ShoppingCart, Zap } from "lucide-react";
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,6 +17,7 @@ import { BulkOrderCta } from "@/components/shop/BulkOrderCta";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { useAddToCart } from "@/components/shop/ProductCard";
 import { clampQty } from "@/context/CartContext";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -65,7 +67,7 @@ function ProductPage() {
             {sub && <span className="rounded-full bg-surface px-3 py-1 text-xs font-medium text-muted-foreground">{sub.name}</span>}
             <h1 className="mt-3 text-3xl text-navy-900 md:text-4xl">{p.name}</h1>
             {/* TODO: confirm GST-inclusive */}
-            <p className="mt-4 text-3xl font-bold text-navy-900">{formatNZD(p.price)} <span className="text-sm font-medium text-muted-foreground">NZD</span></p>
+            <p className="mt-4 text-3xl font-bold text-safety-700">{formatNZD(p.price)} <span className="text-sm font-medium text-muted-foreground">NZD</span></p>
             <p className="mt-4 text-ink">{p.shortDescription}</p>
             <dl className="mt-6 divide-y divide-line rounded-card border border-line">
               {p.details.map((d) => (
@@ -75,8 +77,8 @@ function ProductPage() {
             {p.inStock ? (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <QuantityStepper value={qty} onChange={(n) => setQty(clampQty(n))} label="Quantity" />
-                <Button size="lg" onClick={() => add(p, qty)}><ShoppingCart /> Add to cart</Button>
-                <Button size="lg" variant="outline" onClick={buyNow}><Zap /> Buy now</Button>
+                <Button size="lg" onClick={() => add(p, qty)}><AppIcon name="cart" size={20} /> Add to cart</Button>
+                <Button size="lg" variant="outline" onClick={buyNow}><AppIcon name="buy" size={20} /> Buy now</Button>
               </div>
             ) : (
               <Button size="lg" className="mt-6" disabled>Out of stock</Button>
@@ -102,14 +104,14 @@ function ProductPage() {
           </TabsContent>
         </Tabs>
         <section className="mt-16">
-          <h2 className="text-2xl text-navy-900 md:text-3xl">Related products</h2>
+          <Reveal><h2 className="text-2xl text-navy-900 md:text-3xl">Related products</h2></Reveal>
           <ProductGrid products={relatedProducts(p)} className="mt-6" />
         </section>
       </div>
       {p.inStock && (
         <div className="fixed inset-x-0 bottom-0 z-30 flex items-center gap-3 border-t border-line bg-background p-3 shadow-lg md:hidden">
           <p className="font-bold">{formatNZD(p.price)}</p>
-          <Button className="flex-1" size="lg" onClick={() => add(p, qty)}><ShoppingCart /> Add to cart</Button>
+          <Button className="flex-1" size="lg" onClick={() => add(p, qty)}><AppIcon name="cart" size={20} /> Add to cart</Button>
         </div>
       )}
     </>

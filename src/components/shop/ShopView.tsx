@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { AppIcon } from "@/components/AppIcon";
 import { Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -21,6 +23,9 @@ export function ShopView({ path, title, description, search, onSearch }: Props) 
   const bounds = priceBounds(allProducts);
   const tags = allTags(base);
   const results = applyFilters(base, search);
+  const initial = useRef(JSON.stringify({ path, search }));
+  const changed = useRef(false);
+  if (initial.current !== JSON.stringify({ path, search })) changed.current = true;
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [q, setQ] = useState(search.q ?? "");
   useEffect(() => setVisible(PAGE_SIZE), [path, search.q, search.sort, search.min, search.max, search.tag]);
@@ -65,7 +70,7 @@ export function ShopView({ path, title, description, search, onSearch }: Props) 
           </div>
           {results.length === 0 ? (
             <div className="rounded-card border border-dashed border-line p-10 text-center">
-              <p className="font-display text-2xl font-bold text-navy-900">No products match those filters</p>
+              <AppIcon name="gloves" /><p className="font-display text-2xl font-bold text-navy-900">No products match those filters</p>
               <p className="mt-2 text-muted-foreground">Try clearing the filters, or ask us and we will help you find the right glove.</p>
               <div className="mt-5 flex justify-center gap-3">
                 <Button onClick={clear}>Clear filters</Button>
@@ -74,7 +79,7 @@ export function ShopView({ path, title, description, search, onSearch }: Props) 
             </div>
           ) : (
             <>
-              <ProductGrid products={results.slice(0, visible)} withSidebar />
+              <ProductGrid animate={!changed.current && visible === PAGE_SIZE} products={results.slice(0, visible)} withSidebar />
               {visible < results.length && (
                 <div className="mt-8 text-center"><Button variant="outline" size="lg" onClick={() => setVisible((v) => v + PAGE_SIZE)}>Load more</Button></div>
               )}

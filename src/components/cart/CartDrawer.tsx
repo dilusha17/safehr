@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { Link } from "@tanstack/react-router";
-import { ShoppingBag } from "lucide-react";
+
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
@@ -18,7 +19,7 @@ export function CartDrawer() {
         </SheetHeader>
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
-            <ShoppingBag className="size-12 text-muted-foreground" aria-hidden />
+            <AppIcon name="cart" size={48} />
             <p className="font-semibold">Your cart is empty</p>
             <Button asChild onClick={close}><Link to="/shop">Browse the shop</Link></Button>
           </div>

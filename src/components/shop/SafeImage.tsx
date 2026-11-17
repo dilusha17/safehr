@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { useState, type ImgHTMLAttributes } from "react";
-import { ImageOff } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt" | "width" | "height"> & {
@@ -16,7 +17,7 @@ export function SafeImage({ src, alt, width, height, eager, className, ...rest }
   if (failed) {
     return (
       <div role="img" aria-label={alt} className={cn("flex items-center justify-center bg-surface text-muted-foreground", className)} style={{ aspectRatio: `${width} / ${height}` }}>
-        <ImageOff className="size-8" aria-hidden />
+        <AppIcon name="gloves" size={32} />
       </div>
     );
   }

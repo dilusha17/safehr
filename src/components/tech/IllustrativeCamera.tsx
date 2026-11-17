@@ -1,4 +1,5 @@
-import { BellRing, HardHat } from "lucide-react";
+import { AppIcon } from "@/components/AppIcon";
+
 
 /** Illustrative camera + alert card. No real footage, no numbers. */
 export function IllustrativeCamera({ tone = "dark" }: { tone?: "dark" | "light" }) {
@@ -17,11 +18,11 @@ export function IllustrativeCamera({ tone = "dark" }: { tone?: "dark" | "light" 
       </svg>
       <div className="absolute bottom-0 right-0 w-56 rounded-xl bg-background p-4 shadow-xl" aria-hidden>
         <div className="flex items-center gap-2">
-          <span className="flex size-8 items-center justify-center rounded-md bg-safety-100 text-safety-700"><BellRing className="size-4" /></span>
+          <span className="flex size-8 items-center justify-center rounded-md bg-safety-100 text-safety-700"><AppIcon name="warning" size={16} /></span>
           <p className="text-sm font-bold text-navy-900">PPE alert</p>
         </div>
         <div className="mt-3 flex items-center gap-2 rounded-lg bg-surface p-2 text-xs text-ink">
-          <HardHat className="size-4 text-safety-700" /> Hard hat not detected · Zone B
+          <AppIcon name="safety" size={16} /> Hard hat not detected · Zone B
         </div>
         <div className="mt-2 h-2 w-2/3 rounded-full bg-line" />
       </div>

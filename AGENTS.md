@@ -33,3 +33,6 @@ use the editor.
 - Front-end only store: no backend, database, auth or payments; orders are sent by WhatsApp/email via `src/lib/orderRequest.ts` (owner requirement; swap point for a future backend).
 - All products, categories, company details and copy live in `src/data/`; components derive nav, counts and breadcrumbs from them, never hard-code.
 - Routing is TanStack file routes with per-route `head()` (the brief's React Router/Helmet were mapped to these); shop filters live in validated URL search params.
+- Register bundled decorative icon sets through `src/lib/icons.ts` and render them through `AppIcon`; this prevents runtime icon API requests.
+- Initialize AOS once in the root through `useAos`; `Reveal` opts in only below-fold content, and changed shop grids drop reveals to keep results visible.
+- Reference the uploaded original logo only from `Logo`; public copies serve the favicon and page-specific sharing metadata.

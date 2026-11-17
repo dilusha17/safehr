@@ -21,7 +21,7 @@ export type FilterProps = {
 export function FilterSidebar({ activePath, bounds, min, max, tags, tag, onPrice, onTag, onClear, onNavigate }: FilterProps) {
   const isActive = (path: string[]) => path.join("/") === activePath.join("/");
   const itemCls = (active: boolean) =>
-    cn("flex justify-between rounded-md px-2 py-1.5 text-sm hover:bg-surface", active ? "bg-safety-100 font-semibold text-navy-900" : "text-ink");
+    cn("flex justify-between rounded-md px-2 py-1.5 text-sm hover:bg-surface", active ? "bg-safety-100 font-semibold text-safety-700" : "text-ink");
   return (
     <div className="space-y-8">
       <section aria-labelledby="f-cat">
@@ -66,18 +66,19 @@ export function FilterSidebar({ activePath, bounds, min, max, tags, tag, onPrice
           <h2 id="f-tag" className="text-base">Features</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {tags.map((t) => (
-              <button
+              <Button
                 key={t}
                 type="button"
                 aria-pressed={tag === t}
                 onClick={() => onTag(tag === t ? undefined : t)}
+                variant="ghost"
                 className={cn(
-                  "rounded-full border px-3 py-1 text-sm transition-colors",
-                  tag === t ? "border-navy-900 bg-navy-900 text-on-dark" : "border-line bg-background text-ink hover:border-navy-700",
+                  "h-auto rounded-full border px-3 py-1 text-sm font-normal transition-colors",
+                  tag === t ? "border-safety-500 bg-safety-500 text-navy-900 hover:bg-safety-600" : "border-line bg-background text-ink hover:border-safety-500",
                 )}
               >
                 {tagLabel(t)}
-              </button>
+              </Button>
             ))}
           </div>
         </section>

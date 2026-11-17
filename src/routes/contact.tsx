@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle, Phone, type LucideIcon } from "lucide-react";
+import { AppIcon } from "@/components/AppIcon";
+import type { IconName } from "@/lib/icons";
+import { Reveal } from "@/components/Reveal";
 import type { ReactNode } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -13,12 +15,12 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-function InfoCard({ Icon, title, children }: { Icon: LucideIcon; title: string; children: ReactNode }) {
+function InfoCard({ Icon, title, children }: { Icon: IconName; title: string; children: ReactNode }) {
   return (
-    <div className="card-base flex gap-4 p-5">
-      <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-safety-100 text-safety-700"><Icon className="size-5" aria-hidden /></span>
+    <Reveal><div className="card-base flex gap-4 p-5">
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-safety-100 text-safety-700"><AppIcon name={Icon} size={40} /></span>
       <div><h2 className="text-base text-navy-900">{title}</h2><div className="mt-1 text-sm text-ink">{children}</div></div>
-    </div>
+    </div></Reveal>
   );
 }
 
@@ -30,13 +32,13 @@ function ContactPage() {
       <p className="mt-2 text-muted-foreground">Questions about products, orders or our technology? We are happy to help.</p>
       <div className="mt-10 grid gap-10 lg:grid-cols-2">
         <div className="space-y-4">
-          <InfoCard Icon={MapPin} title="Address">
+          <InfoCard Icon="address" title="Address">
             <address className="not-italic">{company.address.full}</address>
             <Button asChild variant="link" className="h-auto p-0"><a href={company.mapsUrl} target="_blank" rel="noopener noreferrer">Open in Google Maps</a></Button>
           </InfoCard>
-          <InfoCard Icon={Phone} title="Phone"><a href={company.phone.href} className="font-semibold hover:underline">{company.phone.display}</a></InfoCard>
-          <InfoCard Icon={MessageCircle} title="WhatsApp"><a href={company.whatsapp.href} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">{company.whatsapp.display}</a></InfoCard>
-          <InfoCard Icon={Mail} title="Email"><a href={`mailto:${company.email}`} className="break-all font-semibold hover:underline">{company.email}</a></InfoCard>
+          <InfoCard Icon="phone" title="Phone"><a href={company.phone.href} className="font-semibold hover:underline">{company.phone.display}</a></InfoCard>
+          <InfoCard Icon="whatsapp" title="WhatsApp"><a href={company.whatsapp.href} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">{company.whatsapp.display}</a></InfoCard>
+          <InfoCard Icon="email" title="Email"><a href={`mailto:${company.email}`} className="break-all font-semibold hover:underline">{company.email}</a></InfoCard>
           <iframe title={`Map of ${company.address.full}`} src={company.mapsEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" width={600} height={320} className="h-80 w-full rounded-card border border-line" />
         </div>
         <div className="card-base h-fit p-6 hover:shadow-none md:p-8">

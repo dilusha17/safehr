@@ -1,5 +1,6 @@
+import { AppIcon } from "@/components/AppIcon";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { CheckCircle2, Info } from "lucide-react";
+
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -29,13 +30,13 @@ function CheckoutPage() {
       <h1 className="text-4xl text-navy-900">Order request</h1>
       {/* TODO(backend): replace with online payment later */}
       <p className="mt-4 flex max-w-3xl gap-2 rounded-card bg-safety-100 p-4 text-sm text-navy-900">
-        <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
+        <AppIcon name="info" size={16} />
         No payment is taken on this website. Our team confirms your order, delivery and payment with you.
       </p>
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_22rem]">
         {message ? (
           <div className="rounded-card border border-success/40 p-6" role="status">
-            <CheckCircle2 className="size-10 text-success" aria-hidden />
+            <AppIcon name="success" size={40} />
             <h2 className="mt-3 text-2xl text-navy-900">Your order request is ready</h2>
             <p className="mt-2 text-ink">Press send in WhatsApp or your email app to submit it. Nothing has been charged.</p>
             <pre className="mt-4 max-h-72 overflow-auto whitespace-pre-wrap rounded-md bg-surface p-4 text-sm">{message}</pre>

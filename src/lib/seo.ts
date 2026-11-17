@@ -9,6 +9,8 @@ export function seo(title: string, description: string, path: string, type = "we
       { property: "og:type", content: type },
       { property: "og:url", content: path },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://pixel-perfect-replay-70897.lovable.app/logo-share.png" },
+      { name: "twitter:image", content: "https://pixel-perfect-replay-70897.lovable.app/logo-share.png" },
     ],
     links: [{ rel: "canonical", href: path }],
   };
