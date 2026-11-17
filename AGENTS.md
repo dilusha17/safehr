@@ -36,3 +36,4 @@ use the editor.
 - Register bundled decorative icon sets through `src/lib/icons.ts` and render them through `AppIcon`; this prevents runtime icon API requests.
 - Initialize AOS once in the root through `useAos`; `Reveal` opts in only below-fold content, and changed shop grids drop reveals to keep results visible.
 - Reference the uploaded original logo only from `Logo`; public copies serve the favicon and page-specific sharing metadata.
+- Keep blog content in typed data blocks and blog filters in validated URL search state; shared renderers keep articles consistent without changing commerce.

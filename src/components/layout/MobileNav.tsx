@@ -59,6 +59,7 @@ export function MobileNav() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+          <Link to="/blog" className={linkCls} activeProps={{ className: "text-safety-700" }} onClick={close}>Blog</Link>
           <Link to="/bulk-orders" search={{ product: undefined }} className={linkCls} onClick={close}>Bulk orders</Link>
           <Link to="/about" className={linkCls} onClick={close}>About</Link>
           <Link to="/contact" search={{ topic: undefined }} className={linkCls} onClick={close}>Contact</Link>

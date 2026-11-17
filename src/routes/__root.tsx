@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
 import { CartProvider } from "@/context/CartContext";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -30,7 +31,8 @@ function NotFoundComponent() {
         <p className="mt-2 text-muted-foreground">
           We couldn't find that page. Try the shop or head back home.
         </p>
-        <div className="mt-6 flex justify-center gap-3">
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <Button asChild variant="outline"><Link to="/blog">Blog</Link></Button>
           <Link to="/shop" className="inline-flex h-11 items-center rounded-md bg-safety-500 px-5 font-semibold text-navy-900 hover:bg-safety-600">Shop</Link>
           <Link to="/" className="inline-flex h-11 items-center rounded-md border-2 border-navy-900 px-5 font-semibold text-navy-900">Home</Link>
         </div>
