@@ -41,7 +41,7 @@ export function BulkOrderCta({ variant = "banner", product, productUrl, title, b
         <p className="mt-1 text-sm text-ink">{body ?? "Bulk orders: contact the seller."}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Button asChild variant="navy">
-            <a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size=20 /> WhatsApp the seller</a>
+            <a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={20} /> WhatsApp the seller</a>
           </Button>
           <Button asChild variant="outline">
             <Link to="/bulk-orders" search={{ product: product?.slug }}><Send /> Send an enquiry</Link>
@@ -61,7 +61,7 @@ export function BulkOrderCta({ variant = "banner", product, productUrl, title, b
         </div>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg">
-            <a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size=20 /> WhatsApp us</a>
+            <a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={20} /> WhatsApp us</a>
           </Button>
           <Button asChild size="lg" variant="outlineLight">
             <Link to="/bulk-orders" search={{ product: product?.slug }}><Send /> Send an enquiry</Link>

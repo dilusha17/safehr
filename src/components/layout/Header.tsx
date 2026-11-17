@@ -57,11 +57,11 @@ export function Header() {
             </Button>
             <Button asChild variant="outline" size="sm" className="hidden md:inline-flex">
               <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                <AppIcon name="whatsapp" size=20 /> WhatsApp
+                <AppIcon name="whatsapp" size={20} /> WhatsApp
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="relative" onClick={() => setOpen(true)} aria-label={`Open cart, ${hydrated ? totalQty : 0} items`}>
-              <AppIcon name="cart" size=20 />
+              <AppIcon name="cart" size={20} />
               {hydrated && totalQty > 0 && (
                 <span className="absolute -right-0.5 -top-0.5 flex min-w-5 items-center justify-center rounded-full bg-safety-500 px-1 text-[0.7rem] font-bold leading-5 text-navy-900" aria-hidden>
                   {totalQty}

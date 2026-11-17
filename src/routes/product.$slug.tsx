@@ -76,8 +76,8 @@ function ProductPage() {
             {p.inStock ? (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <QuantityStepper value={qty} onChange={(n) => setQty(clampQty(n))} label="Quantity" />
-                <Button size="lg" onClick={() => add(p, qty)}><AppIcon name="cart" size=20 /> Add to cart</Button>
-                <Button size="lg" variant="outline" onClick={buyNow}><AppIcon name="buy" size=20 /> Buy now</Button>
+                <Button size="lg" onClick={() => add(p, qty)}><AppIcon name="cart" size={20} /> Add to cart</Button>
+                <Button size="lg" variant="outline" onClick={buyNow}><AppIcon name="buy" size={20} /> Buy now</Button>
               </div>
             ) : (
               <Button size="lg" className="mt-6" disabled>Out of stock</Button>
@@ -110,7 +110,7 @@ function ProductPage() {
       {p.inStock && (
         <div className="fixed inset-x-0 bottom-0 z-30 flex items-center gap-3 border-t border-line bg-background p-3 shadow-lg md:hidden">
           <p className="font-bold">{formatNZD(p.price)}</p>
-          <Button className="flex-1" size="lg" onClick={() => add(p, qty)}><AppIcon name="cart" size=20 /> Add to cart</Button>
+          <Button className="flex-1" size="lg" onClick={() => add(p, qty)}><AppIcon name="cart" size={20} /> Add to cart</Button>
         </div>
       )}
     </>

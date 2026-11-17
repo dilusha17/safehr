@@ -71,7 +71,7 @@ export function TechnologyMenu() {
         <DropdownMenuLabel className="text-xs uppercase tracking-wider text-muted-foreground">Enquiry only</DropdownMenuLabel>
         <DropdownMenuItem asChild className="cursor-pointer items-start gap-3 p-3">
           <Link to="/technology/air-quality-monitoring">
-            <AppIcon name="air" size=20 />
+            <AppIcon name="air" size={20} />
             <span>
               <span className="block font-semibold text-navy-900">Air Quality Monitoring Device</span>
               <span className="block text-xs text-muted-foreground">Air quality and CO sensors</span>
@@ -80,7 +80,7 @@ export function TechnologyMenu() {
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer items-start gap-3 p-3">
           <Link to="/technology/ai-safety-camera-system">
-            <AppIcon name="camera" size=20 />
+            <AppIcon name="camera" size={20} />
             <span>
               <span className="block font-semibold text-navy-900">AI Safety Camera System</span>
               <span className="block text-xs text-muted-foreground">Camera analytics with Redvision</span>

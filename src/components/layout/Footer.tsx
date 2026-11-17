@@ -18,10 +18,10 @@ export function Footer() {
             {company.tagline} A New Zealand workplace safety consultancy supplying safety gloves and equipment.
           </p>
           <address className="mt-5 space-y-2 text-sm not-italic text-on-dark-muted">
-            <p className="flex gap-2"><AppIcon name="address" size=16 />{company.address.full}</p>
-            <p><a className="flex gap-2 hover:text-on-dark" href={company.phone.href}><AppIcon name="phone" size=16 />{company.phone.display}</a></p>
-            <p><a className="flex gap-2 hover:text-on-dark" href={company.whatsapp.href} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size=16 />WhatsApp {company.whatsapp.display}</a></p>
-            <p><a className="flex gap-2 break-all hover:text-on-dark" href={`mailto:${company.email}`}><AppIcon name="email" size=16 />{company.email}</a></p>
+            <p className="flex gap-2"><AppIcon name="address" size={16} />{company.address.full}</p>
+            <p><a className="flex gap-2 hover:text-on-dark" href={company.phone.href}><AppIcon name="phone" size={16} />{company.phone.display}</a></p>
+            <p><a className="flex gap-2 hover:text-on-dark" href={company.whatsapp.href} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={16} />WhatsApp {company.whatsapp.display}</a></p>
+            <p><a className="flex gap-2 break-all hover:text-on-dark" href={`mailto:${company.email}`}><AppIcon name="email" size={16} />{company.email}</a></p>
           </address>
         </div>
         <div>

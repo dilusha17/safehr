@@ -39,7 +39,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-auto text-lg font-bold text-safety-700">{formatNZD(product.price)}</p>
         {product.inStock ? (
           <Button className="relative z-10 w-full" onClick={() => add(product)} aria-label={`Add ${product.name} to cart`}>
-            <AppIcon name="cart" size=20 /> Add to cart
+            <AppIcon name="cart" size={20} /> Add to cart
           </Button>
         ) : (
           <Button className="relative z-10 w-full" disabled>Out of stock</Button>

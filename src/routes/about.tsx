@@ -35,7 +35,7 @@ function AboutPage() {
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {testimonials.map((t) => (
               <figure key={t.company} className="card-base p-6">
-                <AppIcon name="quote" size=28 />
+                <AppIcon name="quote" size={28} />
                 <blockquote className="mt-3 text-ink">“{t.quote}”</blockquote>
                 <figcaption className="mt-4 text-sm"><span className="font-semibold text-navy-900">{t.role}</span>, <span className="text-muted-foreground">{t.company}</span></figcaption>
               </figure>

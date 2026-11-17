@@ -21,7 +21,7 @@ function CartPage() {
       <h1 className="text-4xl text-navy-900">Your cart</h1>
       {hydrated && lines.length === 0 ? (
         <div className="mt-10 flex flex-col items-center gap-4 rounded-card border border-dashed border-line p-12 text-center">
-          <AppIcon name="cart" size=48 />
+          <AppIcon name="cart" size={48} />
           <p className="font-display text-2xl font-bold">Your cart is empty</p>
           <Button asChild size="lg"><Link to="/shop">Browse the shop</Link></Button>
         </div>

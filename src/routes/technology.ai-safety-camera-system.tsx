@@ -19,7 +19,7 @@ function AiCameraPage() {
       afterHero={
         <section className="border-b border-line bg-surface" aria-labelledby="privacy-h">
           <div className="container-page flex gap-4 py-10">
-            <AppIcon name="privacy" size=32 />
+            <AppIcon name="privacy" size={32} />
             <div className="max-w-3xl">
               <h2 id="privacy-h" className="text-2xl text-navy-900">Privacy and responsible use</h2>
               {/* TODO: owner to confirm data-handling details and Privacy Act 2020 wording */}

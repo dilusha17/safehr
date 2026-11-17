@@ -19,7 +19,7 @@ export function CartDrawer() {
         </SheetHeader>
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
-            <AppIcon name="cart" size=48 />
+            <AppIcon name="cart" size={48} />
             <p className="font-semibold">Your cart is empty</p>
             <Button asChild onClick={close}><Link to="/shop">Browse the shop</Link></Button>
           </div>

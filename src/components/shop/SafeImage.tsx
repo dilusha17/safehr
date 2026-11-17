@@ -17,7 +17,7 @@ export function SafeImage({ src, alt, width, height, eager, className, ...rest }
   if (failed) {
     return (
       <div role="img" aria-label={alt} className={cn("flex items-center justify-center bg-surface text-muted-foreground", className)} style={{ aspectRatio: `${width} / ${height}` }}>
-        <AppIcon name="gloves" size=32 />
+        <AppIcon name="gloves" size={32} />
       </div>
     );
   }
