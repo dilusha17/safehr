@@ -21,7 +21,7 @@ export function SectionHeading({ eyebrow, title, body, center }: { eyebrow?: str
   );
 }
 
-const categoryIcons: Record<string, IconName> = { "cut-resistant": "cut", "chemical-resistant": "chemical", "general-use": "gloves", "impact-protection": "impact", "garden-use": "garden" };
+const categoryIcons: Record<string, IconName> = { "cut-resistance": "cut", "chemical-resistance": "chemical", "general-use": "gloves", "impact-protection": "impact", "garden-use": "garden" };
 
 export function CategoryTiles() {
   const subs = allSubcategories();

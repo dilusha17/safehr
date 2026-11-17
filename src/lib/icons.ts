@@ -23,6 +23,7 @@ export type IconName = keyof typeof iconNames;
 for (const collection of [fluent, flat, logos]) {
   const used = Object.values(iconNames).filter(id => id.startsWith(`${collection.prefix}:`)).map(id => id.split(":")[1]);
   const icons = Object.fromEntries(used.flatMap(name => {
+    if (!name) return [];
     const icon = (collection.icons as Record<string, { body: string }>)[name];
     return icon ? [[name, icon]] : [];
   }));

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
+import { AppIcon } from "@/components/AppIcon";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -62,8 +63,8 @@ export function MobileNav() {
           <Link to="/about" className={linkCls} onClick={close}>About</Link>
           <Link to="/contact" search={{ topic: undefined }} className={linkCls} onClick={close}>Contact</Link>
           <div className="mt-6 grid gap-2">
-            <Button asChild><a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">WhatsApp us</a></Button>
-            <Button asChild variant="outline"><a href={company.phone.href}>Call {company.phone.display}</a></Button>
+            <Button asChild><a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={20} />WhatsApp us</a></Button>
+            <Button asChild variant="outline"><a href={company.phone.href}><AppIcon name="phone" size={20} />Call {company.phone.display}</a></Button>
           </div>
         </nav>
       </SheetContent>
