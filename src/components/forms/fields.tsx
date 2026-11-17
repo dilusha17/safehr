@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Label } from "@/components/ui/label";
 
-export function Field({ id, label, error, optional, children }: { id: string; label: string; error?: string; optional?: boolean; children: ReactNode }) {
+export function Field({ id, label, error, optional, children }: { id: string; label: string; error?: string | undefined; optional?: boolean; children: ReactNode }) {
   return (
     <div className="space-y-1.5">
       <Label htmlFor={id} className="font-semibold text-navy-900">
