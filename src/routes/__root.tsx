@@ -15,6 +15,8 @@ import { CartProvider } from "@/context/CartContext";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { Logo } from "@/components/layout/Logo";
+import { useAos } from "@/hooks/useAos";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -22,6 +24,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-[60vh] items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
+        <Logo className="mb-6" />
         <p className="font-display text-7xl font-bold text-safety-700">404</p>
         <h1 className="mt-4 text-3xl text-navy-900">Page not found</h1>
         <p className="mt-2 text-muted-foreground">
@@ -82,6 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "theme-color", content: "#F5B027" },
       { title: "Safe HR Consultants | Safety Gloves NZ" },
       { name: "description", content: "Safety gloves and workplace safety technology from Safe HR Consultants, Parnell, Auckland." },
       { property: "og:site_name", content: "Safe HR Consultants" },
@@ -98,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Inter:wght@400;500;600&display=swap" },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,
@@ -122,6 +126,7 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
+  useAos();
   const { queryClient } = Route.useRouteContext();
 
   return (
