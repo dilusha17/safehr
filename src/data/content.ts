@@ -24,6 +24,18 @@ export const aboutServices = [
   { title: "AI and IoT Monitoring", body: "Camera analytics and sensor-driven alerts." },
 ] as const;
 
+export const premiumEquipment = {
+  opening: "Safe HR Consultants is a New Zealand workplace safety consultancy and safety equipment supplier based in Parnell, Auckland. We pair practical compliance know-how with premium protective equipment and technology for modern operations.",
+  title: "Premium safety equipment you can rely on",
+  introduction: "We supply premium-quality safety equipment, chosen to protect people in demanding New Zealand workplaces.",
+  closing: "we put trusted products together with the safety know-how of a consultancy.",
+  cards: [
+    { title: "Premium brand products", body: "Premium-quality safety equipment for demanding New Zealand workplaces.", icon: "safety" },
+    { title: "Expert safety advice", body: "We are a safety consultancy, bringing practical safety know-how to equipment supply.", icon: "support" },
+    { title: "Bulk supply for teams and sites", body: "Contact the seller to discuss products and quantities for your team or site.", icon: "bulk" },
+  ],
+} as const;
+
 export const contactTopics = [
   { value: "general", label: "General enquiry" },
   { value: "order", label: "Order help" },
