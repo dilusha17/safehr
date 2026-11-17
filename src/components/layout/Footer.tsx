@@ -18,6 +18,7 @@ export function Footer() {
           <p className="mt-4 text-sm text-on-dark-muted">
             {company.tagline} A New Zealand workplace safety consultancy supplying safety gloves and equipment.
           </p>
+          <p className="mt-3 text-sm text-on-dark-muted">Distributors of {company.distributorBrand.name}.</p>
           <address className="mt-5 space-y-2 text-sm not-italic text-on-dark-muted">
             <p className="flex gap-2"><AppIcon name="address" size={16} />{company.address.full}</p>
             <p><a className="flex gap-2 hover:text-on-dark" href={company.phone.href}><AppIcon name="phone" size={16} />{company.phone.display}</a></p>
@@ -47,6 +48,7 @@ export function Footer() {
         <Reveal delay={stagger(3)}>
           <h2 className="font-display text-lg">Company</h2>
           <ul className="mt-4 space-y-2">
+            <li><Link to="/blog" className={linkCls}>Blog</Link></li>
             <li><Link to="/about" className={linkCls}>About</Link></li>
             <li><Link to="/contact" search={{ topic: undefined }} className={linkCls}>Contact</Link></li>
             <li><Link to="/bulk-orders" search={{ product: undefined }} className={linkCls}>Bulk orders</Link></li>

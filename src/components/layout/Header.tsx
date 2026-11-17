@@ -48,6 +48,7 @@ export function Header() {
             <Link to="/" className={navCls} activeOptions={{ exact: true }} activeProps={{ className: "text-safety-700" }}>Home</Link>
             <ShopMegaMenu />
             <TechnologyMenu />
+            <Link to="/blog" className={navCls} activeProps={{ className: "text-safety-700" }}>Blog</Link>
             <Link to="/about" className={navCls} activeProps={{ className: "text-safety-700" }}>About</Link>
             <Link to="/contact" search={{ topic: undefined }} className={navCls} activeProps={{ className: "text-safety-700" }}>Contact</Link>
           </nav>

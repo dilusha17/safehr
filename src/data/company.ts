@@ -1,6 +1,8 @@
 export const company = {
   name: "Safe HR Consultants",
   shortName: "SAFE HR",
+  // TODO: owner to confirm brand name, authorised distributor wording and logo permission.
+  distributorBrand: { name: "a well-known premium safety brand" },
   tagline: "Smart safety, delivered.",
   address: {
     line1: "17B Farnham Street",

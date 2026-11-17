@@ -5,6 +5,8 @@ import flat from "@iconify-json/flat-color-icons/icons.json";
 import logos from "@iconify-json/logos/icons.json";
 
 export const iconNames = {
+  newspaper: "fluent-emoji-flat:newspaper", "bar-chart": "flat-color-icons:bar-chart",
+  ambulance: "fluent-emoji-flat:ambulance", sparkles: "fluent-emoji-flat:sparkles",
   cut: "fluent-emoji-flat:scissors", chemical: "fluent-emoji-flat:test-tube",
   gloves: "fluent-emoji-flat:gloves", impact: "fluent-emoji-flat:hammer", garden: "fluent-emoji-flat:seedling",
   safety: "flat-color-icons:data-protection", bulk: "flat-color-icons:shipped",
