@@ -28,11 +28,11 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
               key={c.path.join("/")}
               value={`${c.name} category`}
               onSelect={() =>
-                go(() =>
-                  c.path.length > 1
-                    ? navigate({ to: "/shop/$category/$subcategory", params: { category: c.path[0], subcategory: c.path[1] } })
-                    : navigate({ to: "/shop/$category", params: { category: c.path[0] } }),
-                )
+                go(() => {
+                  const [a = "", b] = c.path;
+                  if (b) navigate({ to: "/shop/$category/$subcategory", params: { category: a, subcategory: b } });
+                  else navigate({ to: "/shop/$category", params: { category: a } });
+                })
               }
             >
               {c.name} <span className="ml-auto text-xs text-muted-foreground">{c.count}</span>

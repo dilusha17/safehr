@@ -41,7 +41,7 @@ function ContactPage() {
         </div>
         <div className="card-base h-fit p-6 hover:shadow-none md:p-8">
           <h2 className="text-2xl text-navy-900">Send an enquiry</h2>
-          <div className="mt-6"><ContactForm key={topic ?? "general"} topic={topic} /></div>
+          <div className="mt-6"><ContactForm key={topic ?? "general"} {...(topic ? { topic } : {})} /></div>
         </div>
       </div>
     </div>

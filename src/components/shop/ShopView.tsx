@@ -14,7 +14,7 @@ import { SortSelect } from "./SortSelect";
 import { ProductGrid } from "./ProductGrid";
 import { BulkOrderCta } from "./BulkOrderCta";
 
-type Props = { path: string[]; title: string; description?: string; search: ShopSearch; onSearch: (s: ShopSearch) => void };
+type Props = { path: string[]; title: string; description?: string | undefined; search: ShopSearch; onSearch: (s: ShopSearch) => void };
 
 export function ShopView({ path, title, description, search, onSearch }: Props) {
   const base = useMemo(() => (path.length ? productsInPath(path) : allProducts), [path]);

@@ -35,7 +35,7 @@ function BulkPage() {
           <p className="mt-6 text-sm text-muted-foreground">Contact us for bulk pricing if you need more than 20 pairs of one product, or have 10 or more items in your cart.</p>
           <div className="mt-12 max-w-3xl">
             <h2 className="text-3xl text-navy-900">Send a bulk enquiry</h2>
-            <div className="mt-6"><BulkOrderForm key={p?.slug ?? "none"} productName={p?.name} /></div>
+            <div className="mt-6"><BulkOrderForm key={p?.slug ?? "none"} {...(p ? { productName: p.name } : {})} /></div>
           </div>
         </div>
       </section>

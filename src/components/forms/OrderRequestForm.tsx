@@ -20,11 +20,12 @@ const schema = z.object({
 
 export function OrderRequestForm({ onReady }: { onReady: (message: string) => void }) {
   const { lines } = useCart();
-  const { register, handleSubmit, formState: { errors } } = useForm<OrderCustomer>({
+  const { register, handleSubmit, formState: { errors } } = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: { fullName: "", company: "", email: "", phone: "", address: "", notes: "" },
   });
-  const send = (via: "wa" | "email") => handleSubmit((customer) => {
+  const send = (via: "wa" | "email") => handleSubmit((values) => {
+    const customer: OrderCustomer = { ...values, company: values.company ?? "", notes: values.notes ?? "" };
     const message = buildOrderMessage({ customer, lines: lines.map((l) => ({ name: l.product.name, qty: l.qty, price: l.product.price })) });
     openExternal(via === "wa" ? buildWhatsAppLink(message) : buildMailtoLink("Order request", message));
     onReady(message);

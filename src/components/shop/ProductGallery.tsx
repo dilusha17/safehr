@@ -7,7 +7,7 @@ import { SafeImage } from "./SafeImage";
 export function ProductGallery({ images, alt }: { images: string[]; alt: string }) {
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
-  const current = images[index];
+  const current = images[index] ?? images[0] ?? "";
   return (
     <div>
       <button type="button" onClick={() => setOpen(true)} className="group relative block w-full overflow-hidden rounded-card border border-line bg-surface p-6" aria-label="Enlarge image">

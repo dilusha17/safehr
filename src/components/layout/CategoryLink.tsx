@@ -1,15 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-type Props = { path: string[]; className?: string; children: ReactNode; onClick?: () => void };
+type Props = { path: string[]; className?: string; children: ReactNode; onClick?: (() => void) | undefined };
 
 /** Typed link to a top-level or sub-category page from a category path. */
 export function CategoryLink({ path, className, children, onClick }: Props) {
-  if (path.length >= 2) {
+  const [a, b] = path;
+  if (a && b) {
     return (
       <Link
         to="/shop/$category/$subcategory"
-        params={{ category: path[0], subcategory: path[1] }}
+        params={{ category: a, subcategory: b }}
         className={className}
         onClick={onClick}
         activeProps={{ "aria-current": "page" }}
@@ -18,9 +19,9 @@ export function CategoryLink({ path, className, children, onClick }: Props) {
       </Link>
     );
   }
-  if (path.length === 1) {
+  if (a) {
     return (
-      <Link to="/shop/$category" params={{ category: path[0] }} className={className} onClick={onClick}>
+      <Link to="/shop/$category" params={{ category: a }} className={className} onClick={onClick}>
         {children}
       </Link>
     );
