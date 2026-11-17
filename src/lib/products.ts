@@ -36,10 +36,6 @@ export function findCategory(path: string[]): CategoryNode | undefined {
   return found;
 }
 
-export function categoryHref(path: string[]): string {
-  return `/shop/${path.join("/")}`;
-}
-
 export function allSubcategories(): CategoryNode[] {
   return categoryTree.flatMap((c) => c.children);
 }
@@ -121,13 +117,14 @@ export function relatedProducts(p: Product, limit = 4): Product[] {
   return [...same, ...top].slice(0, limit);
 }
 
-export type Crumb = { label: string; href?: string };
+export type CrumbTarget = "home" | "shop" | string[];
+export type Crumb = { label: string; target?: CrumbTarget };
 
 export function categoryCrumbs(path: string[]): Crumb[] {
-  const crumbs: Crumb[] = [{ label: "Home", href: "/" }, { label: "Shop", href: "/shop" }];
+  const crumbs: Crumb[] = [{ label: "Home", target: "home" }, { label: "Shop", target: "shop" }];
   for (let i = 1; i <= path.length; i++) {
     const c = findCategory(path.slice(0, i));
-    if (c) crumbs.push({ label: c.name, href: categoryHref(c.path) });
+    if (c) crumbs.push({ label: c.name, target: c.path });
   }
   return crumbs;
 }
