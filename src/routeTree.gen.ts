@@ -18,6 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ShippingReturnsRouteImport } from './routes/shipping-returns'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as TechnologyAiSafetyCameraSystemRouteImport } from './routes/technology.ai-safety-camera-system'
@@ -70,6 +71,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/product/$slug': typeof ProductSlugRoute
   '/technology/ai-safety-camera-system': typeof TechnologyAiSafetyCameraSystemRoute
   '/technology/air-quality-monitoring': typeof TechnologyAirQualityMonitoringRoute
+  '/blog/': typeof BlogIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
   '/shop/$category/': typeof ShopCategoryIndexRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/product/$slug': typeof ProductSlugRoute
   '/technology/ai-safety-camera-system': typeof TechnologyAiSafetyCameraSystemRoute
   '/technology/air-quality-monitoring': typeof TechnologyAirQualityMonitoringRoute
+  '/blog': typeof BlogIndexRoute
   '/shop': typeof ShopIndexRoute
   '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
   '/shop/$category': typeof ShopCategoryIndexRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/product/$slug': typeof ProductSlugRoute
   '/technology/ai-safety-camera-system': typeof TechnologyAiSafetyCameraSystemRoute
   '/technology/air-quality-monitoring': typeof TechnologyAirQualityMonitoringRoute
+  '/blog/': typeof BlogIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/shop/$category/$subcategory': typeof ShopCategorySubcategoryRoute
   '/shop/$category/': typeof ShopCategoryIndexRoute
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/product/$slug'
     | '/technology/ai-safety-camera-system'
     | '/technology/air-quality-monitoring'
+    | '/blog/'
     | '/shop/'
     | '/shop/$category/$subcategory'
     | '/shop/$category/'
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/product/$slug'
     | '/technology/ai-safety-camera-system'
     | '/technology/air-quality-monitoring'
+    | '/blog'
     | '/shop'
     | '/shop/$category/$subcategory'
     | '/shop/$category'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/product/$slug'
     | '/technology/ai-safety-camera-system'
     | '/technology/air-quality-monitoring'
+    | '/blog/'
     | '/shop/'
     | '/shop/$category/$subcategory'
     | '/shop/$category/'
@@ -222,6 +234,7 @@ export interface RootRouteChildren {
   ProductSlugRoute: typeof ProductSlugRoute
   TechnologyAiSafetyCameraSystemRoute: typeof TechnologyAiSafetyCameraSystemRoute
   TechnologyAirQualityMonitoringRoute: typeof TechnologyAirQualityMonitoringRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
   ShopCategorySubcategoryRoute: typeof ShopCategorySubcategoryRoute
   ShopCategoryIndexRoute: typeof ShopCategoryIndexRoute
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
@@ -350,6 +370,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductSlugRoute: ProductSlugRoute,
   TechnologyAiSafetyCameraSystemRoute: TechnologyAiSafetyCameraSystemRoute,
   TechnologyAirQualityMonitoringRoute: TechnologyAirQualityMonitoringRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
   ShopCategorySubcategoryRoute: ShopCategorySubcategoryRoute,
   ShopCategoryIndexRoute: ShopCategoryIndexRoute,
