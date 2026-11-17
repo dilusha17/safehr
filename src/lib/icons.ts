@@ -1,4 +1,5 @@
 import { addCollection } from "@iconify/react";
+import type { IconifyIcon } from "@iconify/react";
 import fluent from "@iconify-json/fluent-emoji-flat/icons.json";
 import flat from "@iconify-json/flat-color-icons/icons.json";
 import logos from "@iconify-json/logos/icons.json";
@@ -18,6 +19,7 @@ export const iconNames = {
   success: "flat-color-icons:checkmark", info: "flat-color-icons:info", buy: "flat-color-icons:shipped",
 } as const;
 export type IconName = keyof typeof iconNames;
+export const bundledIcons = {} as Record<IconName, IconifyIcon>;
 
 // Register only the used subset of each bundled set; never request an icon API.
 for (const collection of [fluent, flat, logos]) {
@@ -28,6 +30,13 @@ for (const collection of [fluent, flat, logos]) {
     return icon ? [[name, icon]] : [];
   }));
   addCollection({ ...collection, icons });
+  for (const [semantic, id] of Object.entries(iconNames)) {
+    if (!id.startsWith(`${collection.prefix}:`)) continue;
+    const icon = icons[id.slice(collection.prefix.length + 1)];
+    if (icon) bundledIcons[semantic as IconName] = {
+      width: collection.width, height: collection.height, ...icon,
+    };
+  }
 }
 
 export function featureIcon(title: string): IconName {
