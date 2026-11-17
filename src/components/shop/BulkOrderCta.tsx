@@ -1,6 +1,6 @@
 import { AppIcon } from "@/components/AppIcon";
 import { Link } from "@tanstack/react-router";
-import { Send } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppLink } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -44,7 +44,7 @@ export function BulkOrderCta({ variant = "banner", product, productUrl, title, b
             <a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={20} /> WhatsApp the seller</a>
           </Button>
           <Button asChild variant="outline">
-            <Link to="/bulk-orders" search={{ product: product?.slug }}><Send /> Send an enquiry</Link>
+            <Link to="/bulk-orders" search={{ product: product?.slug }}><AppIcon name="email" size={20} /> Send an enquiry</Link>
           </Button>
         </div>
       </div>
@@ -54,19 +54,19 @@ export function BulkOrderCta({ variant = "banner", product, productUrl, title, b
   return (
     <section className={cn("rounded-card bg-navy-900 p-8 text-on-dark md:p-12", className)} aria-label="Bulk orders">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-2xl">
+        <Reveal animation="fade-right" className="max-w-2xl">
           <p className="eyebrow text-safety-500">Bulk orders</p>
           <h2 className="mt-2 text-2xl md:text-3xl">{title ?? "Ordering for a whole team or site? Contact us for bulk pricing."}</h2>
           {body && <p className="mt-2 text-on-dark-muted">{body}</p>}
-        </div>
-        <div className="flex flex-wrap gap-3">
+        </Reveal>
+        <Reveal animation="fade-left" className="flex flex-wrap gap-3">
           <Button asChild size="lg">
             <a href={wa} target="_blank" rel="noopener noreferrer"><AppIcon name="whatsapp" size={20} /> WhatsApp us</a>
           </Button>
           <Button asChild size="lg" variant="outlineLight">
-            <Link to="/bulk-orders" search={{ product: product?.slug }}><Send /> Send an enquiry</Link>
+            <Link to="/bulk-orders" search={{ product: product?.slug }}><AppIcon name="email" size={20} /> Send an enquiry</Link>
           </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
